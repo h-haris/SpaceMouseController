@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7F3584E126332619005CAB82 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3584D8263325BE005CAB82 /* IOKit.framework */; };
+		7F6E4B7926331E5600F08B66 /* Quesa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6E4B7826331E5600F08B66 /* Quesa.framework */; };
+		7FBD695C09A8E3A100E96B59 /* PortnamesObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FBD695409A8E3A100E96B59 /* PortnamesObject.h */; };
+		7FBD695D09A8E3A100E96B59 /* PortnamesObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBD695509A8E3A100E96B59 /* PortnamesObject.m */; };
+		7FBD695E09A8E3A100E96B59 /* SPCMdeliverQuesa.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FBD695609A8E3A100E96B59 /* SPCMdeliverQuesa.h */; settings = {ATTRIBUTES = (); }; };
+		7FBD695F09A8E3A100E96B59 /* SPCMdeliverQuesa.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBD695709A8E3A100E96B59 /* SPCMdeliverQuesa.m */; };
+		7FBD696009A8E3A100E96B59 /* SPCMControllerObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FBD695809A8E3A100E96B59 /* SPCMControllerObject.h */; };
+		7FBD696109A8E3A100E96B59 /* SPCMControllerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBD695909A8E3A100E96B59 /* SPCMControllerObject.m */; };
+		7FBD696209A8E3A100E96B59 /* SPCMObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FBD695A09A8E3A100E96B59 /* SPCMObject.h */; };
+		7FBD696309A8E3A100E96B59 /* SPCMObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBD695B09A8E3A100E96B59 /* SPCMObject.m */; };
+		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
+		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32CA4F630368D1EE00C91783 /* SpaceMouseController_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceMouseController_Prefix.pch; sourceTree = "<group>"; };
+		7F3584D8263325BE005CAB82 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = ../../../../../../System/Library/Frameworks/IOKit.framework; sourceTree = "<group>"; };
+		7F6E4B7826331E5600F08B66 /* Quesa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quesa.framework; path = ../Quesa/SDK/Libraries/Mac/Framework_Modern/Debug/Quesa.framework; sourceTree = "<group>"; };
+		7F6E4B7B26331E7200F08B66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7F6E4B7C26331E7200F08B66 /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = en; path = en.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		7F6E4B7D26331EFF00F08B66 /* Quesa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quesa.framework; path = ../../../../Library/Frameworks/Quesa.framework; sourceTree = "<group>"; };
+		7FBD695409A8E3A100E96B59 /* PortnamesObject.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PortnamesObject.h; sourceTree = SOURCE_ROOT; };
+		7FBD695509A8E3A100E96B59 /* PortnamesObject.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = PortnamesObject.m; sourceTree = SOURCE_ROOT; };
+		7FBD695609A8E3A100E96B59 /* SPCMdeliverQuesa.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPCMdeliverQuesa.h; sourceTree = "<group>"; };
+		7FBD695709A8E3A100E96B59 /* SPCMdeliverQuesa.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = SPCMdeliverQuesa.m; sourceTree = "<group>"; };
+		7FBD695809A8E3A100E96B59 /* SPCMControllerObject.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPCMControllerObject.h; sourceTree = SOURCE_ROOT; };
+		7FBD695909A8E3A100E96B59 /* SPCMControllerObject.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = SPCMControllerObject.m; sourceTree = SOURCE_ROOT; };
+		7FBD695A09A8E3A100E96B59 /* SPCMObject.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPCMObject.h; sourceTree = SOURCE_ROOT; };
+		7FBD695B09A8E3A100E96B59 /* SPCMObject.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = SPCMObject.m; sourceTree = SOURCE_ROOT; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* SpaceMouseController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceMouseController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F6E4B7926331E5600F08B66 /* Quesa.framework in Frameworks */,
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				7F3584E126332619005CAB82 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7FBD695409A8E3A100E96B59 /* PortnamesObject.h */,
+				7FBD695509A8E3A100E96B59 /* PortnamesObject.m */,
+				7FBD695609A8E3A100E96B59 /* SPCMdeliverQuesa.h */,
+				7FBD695709A8E3A100E96B59 /* SPCMdeliverQuesa.m */,
+				7FBD695809A8E3A100E96B59 /* SPCMControllerObject.h */,
+				7FBD695909A8E3A100E96B59 /* SPCMControllerObject.m */,
+				7FBD695A09A8E3A100E96B59 /* SPCMObject.h */,
+				7FBD695B09A8E3A100E96B59 /* SPCMObject.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7F6E4B7826331E5600F08B66 /* Quesa.framework */,
+				7F6E4B7D26331EFF00F08B66 /* Quesa.framework */,
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7F3584D8263325BE005CAB82 /* IOKit.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* SpaceMouseController.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* SpaceMouseController */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = SpaceMouseController;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* SpaceMouseController_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107310486CEB800E47090 /* Info.plist */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7F33EB3B0827FCA300508231 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FBD695C09A8E3A100E96B59 /* PortnamesObject.h in Headers */,
+				7FBD695E09A8E3A100E96B59 /* SPCMdeliverQuesa.h in Headers */,
+				7FBD696009A8E3A100E96B59 /* SPCMControllerObject.h in Headers */,
+				7FBD696209A8E3A100E96B59 /* SPCMObject.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* SpaceMouseController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FEE6CA709A87FDF0057EE9D /* Build configuration list for PBXNativeTarget "SpaceMouseController" */;
+			buildPhases = (
+				7F33EB3B0827FCA300508231 /* Headers */,
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpaceMouseController;
+			productInstallPath = "$(HOME)/Applications";
+			productName = SpaceMouseController;
+			productReference = 8D1107320486CEB800E47090 /* SpaceMouseController.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1240;
+			};
+			buildConfigurationList = 7FEE6CAB09A87FDF0057EE9D /* Build configuration list for PBXProject "SpaceMouseController" */;
+			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = en;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* SpaceMouseController */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* SpaceMouseController */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */,
+				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				7FBD695D09A8E3A100E96B59 /* PortnamesObject.m in Sources */,
+				7FBD695F09A8E3A100E96B59 /* SPCMdeliverQuesa.m in Sources */,
+				7FBD696109A8E3A100E96B59 /* SPCMControllerObject.m in Sources */,
+				7FBD696309A8E3A100E96B59 /* SPCMObject.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7F6E4B7B26331E7200F08B66 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		29B97318FDCFA39411CA2CEA /* MainMenu.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7F6E4B7C26331E7200F08B66 /* en */,
+			);
+			name = MainMenu.nib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7FEE6CA809A87FDF0057EE9D /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS)",
+					"$(SRCROOT)/../../../../../Library/Frameworks",
+					"$(USER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SpaceMouseController_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Olifant.SPCM-CTRL";
+				PRODUCT_NAME = SpaceMouseController;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		7FEE6CA909A87FDF0057EE9D /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS)",
+					"$(SRCROOT)/../../../../../Library/Frameworks",
+					"$(USER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SpaceMouseController_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Olifant.SPCM-CTRL";
+				PRODUCT_NAME = SpaceMouseController;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		7FEE6CAA09A87FDF0057EE9D /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS)",
+					"$(SRCROOT)/../../../../../Library/Frameworks",
+					"$(USER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SpaceMouseController_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Olifant.SPCM-CTRL";
+				PRODUCT_NAME = SpaceMouseController;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Default;
+		};
+		7FEE6CAC09A87FDF0057EE9D /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "~/Library/Frameworks";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SpaceMouseController_Prefix.pch;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Development;
+		};
+		7FEE6CAD09A87FDF0057EE9D /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "~/Library/Frameworks";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SpaceMouseController_Prefix.pch;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+			};
+			name = Deployment;
+		};
+		7FEE6CAE09A87FDF0057EE9D /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "~/Library/Frameworks";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SpaceMouseController_Prefix.pch;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7FEE6CA709A87FDF0057EE9D /* Build configuration list for PBXNativeTarget "SpaceMouseController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FEE6CA809A87FDF0057EE9D /* Development */,
+				7FEE6CA909A87FDF0057EE9D /* Deployment */,
+				7FEE6CAA09A87FDF0057EE9D /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		7FEE6CAB09A87FDF0057EE9D /* Build configuration list for PBXProject "SpaceMouseController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FEE6CAC09A87FDF0057EE9D /* Development */,
+				7FEE6CAD09A87FDF0057EE9D /* Deployment */,
+				7FEE6CAE09A87FDF0057EE9D /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

@@ -1,0 +1,25 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {applySettings = id; }; 
+            CLASS = SPCMControllerObject; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                dominantFlag = id; 
+                multiplierRotation = id; 
+                multiplierTranslation = id; 
+                portMenu = id; 
+                rotSensOut = id; 
+                rotationFlag = id; 
+                transSensOut = id; 
+                translationFlag = id; 
+                viewSettingsState = id; 
+                zerRadOut = id; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = SPCMObject; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+    ); 
+    IBVersion = 1; 
+}
