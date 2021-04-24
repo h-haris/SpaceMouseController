@@ -2,32 +2,35 @@
         PortnamesObject.h
 
     DESCRIPTION:
-        Objective-C Interface definition for an object holding the names and paths of 
-		serial ports under MacOS X 
+        Objective-C Interface definition for an object holding the names and paths of
+        serial ports under MacOS X
 
     COPYRIGHT:
-        Copyright (c) 1999-2005, Quesa Developers. All rights reserved.
+        Copyright (c) 2003-2021, Quesa Developers. All rights reserved.
 
         For the current release of Quesa, please see:
 
-            <http://www.quesa.org/>
-        
+            <https://github.com/jwwalker/Quesa>
+
+        For the current release of Quesa including 3D device support,
+        please see: <https://github.com/h-haris/Quesa>
+
         Redistribution and use in source and binary forms, with or without
         modification, are permitted provided that the following conditions
         are met:
-        
+
             o Redistributions of source code must retain the above copyright
               notice, this list of conditions and the following disclaimer.
-        
+
             o Redistributions in binary form must reproduce the above
               copyright notice, this list of conditions and the following
               disclaimer in the documentation and/or other materials provided
               with the distribution.
-        
+
             o Neither the name of Quesa nor the names of its contributors
               may be used to endorse or promote products derived from this
               software without specific prior written permission.
-        
+
         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
         "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
         LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -47,7 +50,7 @@
 @class NSPopUpButton;
 
 @interface PortnamesObject : NSObject {
-	NSMutableArray *PortnamesArray;
+    NSMutableArray *PortnamesArray;
 }
 
 - init;
