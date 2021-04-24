@@ -2,10 +2,10 @@
         SPCMControllerObject.h
 
     DESCRIPTION:
-        Objective-C interface definition for an object acting as the Controller of the 
-		MVC pattern under MacOS X. This object handles a pull-down menu and an object 
-		to fill this menue, a button, several textfields and the Model itself.
-		
+        Objective-C interface definition for an object acting as the Controller of the
+        MVC pattern under MacOS X. This object handles a pull-down menu and an object
+        to fill this menue, a button, several textfields and the Model itself.
+
  COPYRIGHT:
      Copyright (c) 2005-2021, Quesa Developers. All rights reserved.
 
@@ -15,23 +15,23 @@
 
      For the current release of Quesa including 3D device support,
      please see: <https://github.com/h-haris/Quesa>
-     
+
      Redistribution and use in source and binary forms, with or without
      modification, are permitted provided that the following conditions
      are met:
-     
+
          o Redistributions of source code must retain the above copyright
            notice, this list of conditions and the following disclaimer.
-     
+
          o Redistributions in binary form must reproduce the above
            copyright notice, this list of conditions and the following
            disclaimer in the documentation and/or other materials provided
            with the distribution.
-     
+
          o Neither the name of Quesa nor the names of its contributors
            may be used to endorse or promote products derived from this
            software without specific prior written permission.
-     
+
      THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
      "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
      LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -53,18 +53,18 @@
 
 @interface SPCMControllerObject : NSObject
 {
-    IBOutlet NSTextField 	*dominantFlag;
-    IBOutlet NSTextField 	*multiplierRotation;
-    IBOutlet NSTextField 	*multiplierTranslation;
-    IBOutlet NSPopUpButton 	*portMenu;
-    IBOutlet NSTextField 	*rotationFlag;
-    IBOutlet NSTextField 	*rotSensOut;
-    IBOutlet NSTextField 	*translationFlag;
-    IBOutlet NSTextField 	*transSensOut;
-    IBOutlet NSTextField 	*zerRadOut;
-	IBOutlet NSTabView 		*viewSettingsState;
-    SPCMObject 				*theMouse;
-	PortnamesObject			*thePorts;
+    IBOutlet NSTextField    *dominantFlag;
+    IBOutlet NSTextField    *multiplierRotation;
+    IBOutlet NSTextField    *multiplierTranslation;
+    IBOutlet NSPopUpButton  *portMenu;
+    IBOutlet NSTextField    *rotationFlag;
+    IBOutlet NSTextField    *rotSensOut;
+    IBOutlet NSTextField    *translationFlag;
+    IBOutlet NSTextField    *transSensOut;
+    IBOutlet NSTextField    *zerRadOut;
+    IBOutlet NSTabView      *viewSettingsState;
+    SPCMObject              *theMouse;
+    PortnamesObject         *thePorts;
 }
 
 - (IBAction)applySettings:(id)sender;
@@ -72,8 +72,8 @@
 - (void) awakeFromNib;
 - (void) dealloc;
 
-- (void) takeRotScaleFrom:(id)sender;	//gets called, when the value was set from the prefs
-- (void) takeTransScaleFrom:(id)sender;	//gets called, when the value was set from the prefs
+- (void) takeRotScaleFrom:(id)sender;   //gets called, when the value was set from the prefs
+- (void) takeTransScaleFrom:(id)sender; //gets called, when the value was set from the prefs
 
 - (void) UpdateModes:(id)sender;
 - (void) UpdateSensitivities:(id)sender;

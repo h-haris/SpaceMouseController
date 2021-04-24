@@ -2,7 +2,7 @@
         SPCMObject.h
 
     DESCRIPTION:
-        Objective-C interface definition for an object (M and C part of the MVC pattern) 
+        Objective-C interface definition for an object (M and C part of the MVC pattern)
         communicating to and from a Logitech Spacemouse (Magellan; grey modell; RS232
         connection) under MacOS X.
         Following is modelled:
@@ -21,23 +21,23 @@
 
      For the current release of Quesa including 3D device support,
      please see: <https://github.com/h-haris/Quesa>
-     
+
      Redistribution and use in source and binary forms, with or without
      modification, are permitted provided that the following conditions
      are met:
-     
+
          o Redistributions of source code must retain the above copyright
            notice, this list of conditions and the following disclaimer.
-     
+
          o Redistributions in binary form must reproduce the above
            copyright notice, this list of conditions and the following
            disclaimer in the documentation and/or other materials provided
            with the distribution.
-     
+
          o Neither the name of Quesa nor the names of its contributors
            may be used to endorse or promote products derived from this
            software without specific prior written permission.
-     
+
      THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
      "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
      LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -53,7 +53,7 @@
 */
 
 //needed for the termios-struct in SPCMObject.h:
-#include <termios.h>		
+#include <termios.h>
 
 #import <Cocoa/Cocoa.h>
 
@@ -64,40 +64,40 @@
     //holds used serial port and its NSFileHandle
     //holds multipliers for rot and trans
     //holds decoded device state
-	
-	//object runtime states and structures
-    id		frontend;
-   
-	float	rotMult;
-    float	transMult;
-	
-	//serial port
-    struct 	termios 	gOriginalTTYAttrs;
-    NSInteger   portDescriptor;
-	id          port;
-	
-	SPCMdeliverQuesa *QuesaConnection;	//Connection to Quesa; holds ControllerRef	
 
-	NSString *devPathString;
-	
-	NSMutableString *inEvents;
-	
-	NSUserDefaults *prefs;
-	
-	//prefs + State
-	NSInteger   selectedPortItem;
-	
-	BOOL 	hasPrefsFile;
-	
-    BOOL	transOn;
-    BOOL	rotOn;
-    BOOL	domModeOn;
+    //object runtime states and structures
+    id      frontend;
+
+    float   rotMult;
+    float   transMult;
+
+    //serial port
+    struct  termios     gOriginalTTYAttrs;
+    NSInteger   portDescriptor;
+    id          port;
+
+    SPCMdeliverQuesa *QuesaConnection;  //Connection to Quesa; holds ControllerRef
+
+    NSString *devPathString;
+
+    NSMutableString *inEvents;
+
+    NSUserDefaults *prefs;
+
+    //prefs + State
+    NSInteger   selectedPortItem;
+
+    BOOL    hasPrefsFile;
+
+    BOOL    transOn;
+    BOOL    rotOn;
+    BOOL    domModeOn;
     NSInteger   rotQuality;
     NSInteger   transQuality;
     NSInteger   nullRad;
-	
-	float	rotScale;
-    float	transScale;
+
+    float   rotScale;
+    float   transScale;
 }
 
 - init;
@@ -142,9 +142,9 @@
 - (float)transScale;
 
 //send commands + parse received strings
-- setMouseDomMode:(BOOL)domFlag 
-		  withTransOn:(BOOL)transFlag
-	      andRotOn:(BOOL)rotFlag;
+- setMouseDomMode:(BOOL)domFlag
+          withTransOn:(BOOL)transFlag
+          andRotOn:(BOOL)rotFlag;
 - setTransQual:(NSInteger)transInt andRotQual:(NSInteger)rotInt;
 - setDataRateMin:(NSInteger)minRate andMax:(NSInteger)maxRate;
 - setNullRad:(NSInteger)anInt;
