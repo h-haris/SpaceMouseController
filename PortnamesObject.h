@@ -3,14 +3,17 @@
 
     DESCRIPTION:
         Objective-C Interface definition for an object holding the names and paths of 
-		serial ports under MacOS X 
+        serial ports under MacOS X
 
     COPYRIGHT:
-        Copyright (c) 1999-2005, Quesa Developers. All rights reserved.
+        Copyright (c) 2003-2021, Quesa Developers. All rights reserved.
 
         For the current release of Quesa, please see:
 
-            <http://www.quesa.org/>
+            <https://github.com/jwwalker/Quesa>
+
+        For the current release of Quesa including 3D device support,
+        please see: <https://github.com/h-haris/Quesa>
         
         Redistribution and use in source and binary forms, with or without
         modification, are permitted provided that the following conditions

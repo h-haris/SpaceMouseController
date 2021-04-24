@@ -1,51 +1,54 @@
 /*  NAME:
         SPCMObject.m
 
-    DESCRIPTION:
-        Objective-C implementation of an object (M and C part of the MVC pattern) 
-		communicating to and from a Logitech Spacemouse (Magellan; grey modell; RS232 
-		connection) under MacOS X.
-		Following is modelled:
-		- object holds used serial port and its NSFileHandle
-		- object holds multipliers for rot and trans and decoded device state
-		- Preferences
-		- communication and parsing of device replies
+ DESCRIPTION:
+     Objective-C interface definition for an object (M and C part of the MVC pattern)
+     communicating to and from a Logitech Spacemouse (Magellan; grey modell; RS232
+     connection) under MacOS X.
+     Following is modelled:
+     - object holds: used serial port and its NSFileHandle
+     - object holds: multipliers for rot and trans and decoded device state
+     - Preferences
+     - communication and parsing of device replies
 
-    COPYRIGHT:
-        Copyright (c) 1999-2005, Quesa Developers. All rights reserved.
+ COPYRIGHT:
+  Copyright (c) 2005-2021, Quesa Developers. All rights reserved.
 
-        For the current release of Quesa, please see:
+  For the current release of Quesa, please see:
 
-            <http://www.quesa.org/>
-        
-        Redistribution and use in source and binary forms, with or without
-        modification, are permitted provided that the following conditions
-        are met:
-        
-            o Redistributions of source code must retain the above copyright
-              notice, this list of conditions and the following disclaimer.
-        
-            o Redistributions in binary form must reproduce the above
-              copyright notice, this list of conditions and the following
-              disclaimer in the documentation and/or other materials provided
-              with the distribution.
-        
-            o Neither the name of Quesa nor the names of its contributors
-              may be used to endorse or promote products derived from this
-              software without specific prior written permission.
-        
-        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-        "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-        LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-        A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-        OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-        SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
-        TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-        PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-        LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-        NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-        SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    ___________________________________________________________________________
+      <https://github.com/jwwalker/Quesa>
+
+  For the current release of Quesa including 3D device support,
+  please see: <https://github.com/h-haris/Quesa>
+  
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+  
+      o Redistributions of source code must retain the above copyright
+        notice, this list of conditions and the following disclaimer.
+  
+      o Redistributions in binary form must reproduce the above
+        copyright notice, this list of conditions and the following
+        disclaimer in the documentation and/or other materials provided
+        with the distribution.
+  
+      o Neither the name of Quesa nor the names of its contributors
+        may be used to endorse or promote products derived from this
+        software without specific prior written permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+  TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+___________________________________________________________________________
 */
 
 #include <fcntl.h>
@@ -94,7 +97,7 @@ static char NibbleToCharTable[] =
 - (void)dealloc
 {
     //Destructor
-    
+
 	[devPathString release];
 	[inEvents release];
 	[self disconnectFromDevice];
@@ -124,18 +127,18 @@ static char NibbleToCharTable[] =
 	[defaultPrefs setObject: [NSNumber numberWithInt:4] forKey:@"rotationQuality"];
 	[defaultPrefs setObject: [NSNumber numberWithInt:2] forKey:@"translationQuality"];
 	[defaultPrefs setObject: [NSNumber numberWithInt:15] forKey:@"nullRadius"];
-	
+
 	[defaultPrefs setObject: [NSNumber numberWithFloat:10.0] forKey:@"rotScale"];
 	[defaultPrefs setObject: [NSNumber numberWithFloat:3.0] forKey:@"transScale"];
-	
+
 	// register the dictionary of defaults 
 	[prefs registerDefaults: defaultPrefs];
-	
+
 	hasPrefsFile = [prefs boolForKey:@"hasPrefsFile"];
 	transOn = [prefs boolForKey:@"translationOn"];
 	rotOn = [prefs boolForKey:@"rotationOn"];
 	domModeOn = [prefs boolForKey:@"dominantModeOn"];
-		
+
 	selectedPortItem = [prefs integerForKey:@"selectedPortItem"];
 	rotQuality = [prefs integerForKey:@"rotationQuality"];
 	transQuality = [prefs integerForKey:@"translationQuality"];
@@ -287,8 +290,8 @@ static char NibbleToCharTable[] =
 	[self zeroMouse];
 	//transmit last settings
 	[self setMouseDomMode:domModeOn 
-				withTransOn:transOn
-				andRotOn:rotOn];
+              withTransOn:transOn
+                 andRotOn:rotOn];
 	
 	[self setTransQual:transQuality 
 			andRotQual:rotQuality];
@@ -346,9 +349,9 @@ error:
 {
     NSData *SPCMEvent=[[notification userInfo] 
         objectForKey:@"NSFileHandleNotificationDataItem"];
-	    
+
 	[self processNotificationData:SPCMEvent];
-    
+
     //restart reading
     [port readInBackgroundAndNotify];
 } 
@@ -390,11 +393,11 @@ error:
 }
 
 - setMouseDomMode:(BOOL)domFlag 
-		  withTransOn:(BOOL)transFlag
-	      andRotOn:(BOOL)rotFlag
+      withTransOn:(BOOL)transFlag
+         andRotOn:(BOOL)rotFlag
 {
 	char	serSendBuffer[3];
-    	
+
 	rotOn		=rotFlag;
 	transOn		=transFlag;
 	domModeOn	=domFlag;
@@ -599,7 +602,7 @@ error:
 			domModeOn=YES;
 	else	domModeOn=NO;
         
-	[frontend UpdateModes:self];        
+	[frontend UpdateModes:self];
 	return self;
 }
 
