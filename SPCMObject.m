@@ -245,7 +245,7 @@ static char NibbleToCharTable[] =
     // These options are documented in the man page for termios
     // (in Terminal enter: man termios/ openman termios (if manopen is installed))
     options = gOriginalTTYAttrs;
-    options.c_cflag|=(B9600 | CREAD | CS8 | CSTOPB | HUPCL | CRTSCTS); //or
+    options.c_cflag|=(B19200 | CREAD | CS8 | CSTOPB | HUPCL | CRTSCTS); //or
     options.c_lflag=0;
     //options.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG); //and not
     //ICANON : canonicalize input lines
