@@ -159,34 +159,46 @@
 - (void) UpdateModes:(id)sender
 {
     //dominantFlag
-    if ([sender domModeOn])
+    if ([sender domModeOn]) {
+        [dominantFlag setStringValue:@"Dominant  ✓"];
         [dominantFlag setTextColor:[NSColor controlTextColor]];
-    else
+    } else {
+        [dominantFlag setStringValue:@"Dominant  ✗"];
         [dominantFlag setTextColor:[NSColor disabledControlTextColor]];
+    }
 
     //rotationFlag
-    if ([sender rotOn])
+    if ([sender rotOn]) {
+        [rotationFlag setStringValue:@"Rotation  ✓"];
         [rotationFlag setTextColor:[NSColor controlTextColor]];
-    else
+    } else {
+        [rotationFlag setStringValue:@"Rotation  ✗"];
         [rotationFlag setTextColor:[NSColor disabledControlTextColor]];
+    }
 
     //translationFlag
-    if ([sender transOn])
+    if ([sender transOn]) {
+        [translationFlag setStringValue:@"Translation  ✓"];
         [translationFlag setTextColor:[NSColor controlTextColor]];
-    else
+    } else {
+        [translationFlag setStringValue:@"Translation  ✗"];
         [translationFlag setTextColor:[NSColor disabledControlTextColor]];
+    }
 }
 
 - (void) UpdateSensitivities:(id)sender
 {
-    [rotSensOut setIntValue:[sender rotQuality]];
+    [rotSensOut setStringValue:
+        [NSString stringWithFormat:@"%ld / 15", (long)[sender rotQuality]]];
 
-    [transSensOut setIntValue:[sender transQuality]];
+    [transSensOut setStringValue:
+        [NSString stringWithFormat:@"%ld / 15", (long)[sender transQuality]]];
 }
 
 - (void) UpdateNullRadius:(id)sender
 {
-    [zerRadOut setIntValue:[sender nullRad]];
+    [zerRadOut setStringValue:
+        [NSString stringWithFormat:@"%ld / 15", (long)[sender nullRad]]];
 }
 
 @end

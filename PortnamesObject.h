@@ -60,5 +60,6 @@
 
 - (void)fillMenu:(id)thePopUp;
 - (NSString*)getDevicePathFromMenuitem:(int)anInt;
+- (NSArray<NSString *> *)portNames;
 
 @end

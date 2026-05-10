@@ -11,6 +11,9 @@
      - Preferences
      - communication and parsing of device replies
 
+     RS-232 protocol reference:
+         https://spacemice.org/index.php?title=Spacemouse_Plus
+
  COPYRIGHT:
   Copyright (c) 2005-2021, Quesa Developers. All rights reserved.
 
@@ -56,6 +59,8 @@ ___________________________________________________________________________
 
 #import "SPCMObject.h"
 #import "SPCMdeliverQuesa.h"
+
+#define SPCM_DEBUG 0  // set to 1 to log raw bytes, events, and motion data
 
 static SInt8 CharToNibble(char ch)
 {
@@ -124,7 +129,7 @@ static char NibbleToCharTable[] =
     [defaultPrefs setObject: [NSNumber numberWithBool:NO] forKey:@"dominantModeOn"];
 
     [defaultPrefs setObject: [NSNumber numberWithInt:0] forKey:@"selectedPortItem"];
-    [defaultPrefs setObject: [NSNumber numberWithInt:4] forKey:@"rotationQuality"];
+    [defaultPrefs setObject: [NSNumber numberWithInt:8] forKey:@"rotationQuality"];
     [defaultPrefs setObject: [NSNumber numberWithInt:2] forKey:@"translationQuality"];
     [defaultPrefs setObject: [NSNumber numberWithInt:15] forKey:@"nullRadius"];
 
@@ -214,6 +219,7 @@ static char NibbleToCharTable[] =
     struct termios  options;
     // Init a new port and don't forget to reset our buffers!
 
+    NSLog(@"[SPCM] connecting to %@", devPathString);
     portDescriptor=open([devPathString cString], O_RDWR | O_NOCTTY | O_NDELAY );
     //O_RDWR   : open for reading and writing
     //O_NOCTTY : don't assign a controlling terminal
@@ -295,11 +301,14 @@ static char NibbleToCharTable[] =
 
     [self setTransQual:transQuality
             andRotQual:rotQuality];
-    [self setDataRateMin:2 andMax:8];
+    [self setDataRateMin:2 andMax:2]; // always 60ms; max=8 (180ms) caused visible stepping
     [self setNullRad:nullRad];
 
     [self beepFor:4];
 
+    NSLog(@"[SPCM] connected to %@ (dom=%d trans=%d rot=%d transQ=%ld rotQ=%ld nullRad=%ld)",
+          devPathString, domModeOn, transOn, rotOn,
+          (long)transQuality, (long)rotQuality, (long)nullRad);
     return TRUE;
 
     // Failure path
@@ -316,6 +325,7 @@ error:
 {
     if([self isConnected])
     {
+        NSLog(@"[SPCM] disconnecting from %@", devPathString);
         //Notification is off!
         [[NSNotificationCenter defaultCenter] removeObserver:self];
 
@@ -360,35 +370,54 @@ error:
 {
     NSString        *notifString;
     NSCharacterSet  *crSet;
-    NSScanner       *inScanner;
-    NSString        *anEvent;
-    NSRange         crRange, cuttingRange;
+    NSRange         crRange, remaining;
 
-    //convert notification data to notification string
+#if SPCM_DEBUG
+    // Log raw bytes to stderr (bypasses macOS unified logging privacy filter).
+    const uint8_t *bytes = (const uint8_t *)[notificationData bytes];
+    NSUInteger len = [notificationData length];
+    fprintf(stderr, "[SPCM] raw (%lu bytes): ", (unsigned long)len);
+    for (NSUInteger i = 0; i < len; i++)
+    {
+        uint8_t b = bytes[i];
+        if (b == '\r')
+            fprintf(stderr, "<CR> ");
+        else if (b < 0x20 || b > 0x7E)
+            fprintf(stderr, "<%02X> ", b);
+        else
+            fprintf(stderr, "%c ", b);
+    }
+    fprintf(stderr, "\n");
+#endif
+
+    //convert notification data to notification string and append to carry-over buffer
     notifString=[[NSString alloc] initWithData:notificationData encoding:NSASCIIStringEncoding];
-    //append notification string to event string
     [inEvents appendString:notifString];
     [notifString release];
-    //setup scanner
-    crSet=[NSCharacterSet characterSetWithCharactersInString:@"\r"];
-    inScanner=[NSScanner scannerWithString:inEvents];
-    //search for \r (CR) in event string -- quick 'n' dirty: at end of inEvents
-    crRange = [inEvents rangeOfCharacterFromSet:crSet];
-    if (crRange.location != NSNotFound){
-        //do bookkeeping for later character deletion
-        cuttingRange.location=[inScanner scanLocation];
-        //scan ...
-        while ([inScanner isAtEnd] == NO) {
-            if ([inScanner scanUpToCharactersFromSet:crSet intoString:&anEvent]) {
-                //... and parse
-                [self doEvent:[anEvent cStringUsingEncoding:NSASCIIStringEncoding]];
-                //do bookkeeping for later character deletion
-                cuttingRange.length=[inScanner scanLocation]+1;
-            }
-        }
-        //remove found events from event string
-        [inEvents deleteCharactersInRange:cuttingRange];
+
+    // Process only CR-terminated packets, preserving any trailing partial packet.
+    crSet = [NSCharacterSet characterSetWithCharactersInString:@"\r"];
+    remaining = NSMakeRange(0, [inEvents length]);
+    while (remaining.length > 0) {
+        crRange = [inEvents rangeOfCharacterFromSet:crSet options:0 range:remaining];
+        if (crRange.location == NSNotFound)
+            break; // no complete packet yet — wait for more data
+
+        // Extract the packet without the CR
+        NSRange packetRange = NSMakeRange(remaining.location,
+                                          crRange.location - remaining.location);
+        NSString *packetStr = [inEvents substringWithRange:packetRange];
+        [self doEvent:[packetStr cStringUsingEncoding:NSASCIIStringEncoding]];
+
+        // Advance past the CR
+        NSUInteger nextStart = crRange.location + 1;
+        remaining = NSMakeRange(nextStart, [inEvents length] - nextStart);
     }
+
+    // Delete all consumed characters; keep the partial packet tail (if any)
+    if (remaining.location > 0)
+        [inEvents deleteCharactersInRange:NSMakeRange(0, remaining.location)];
+
     return self;
 }
 
@@ -572,13 +601,13 @@ error:
 {
     if(buffer!=NULL)
     {
+#if SPCM_DEBUG
+        NSLog(@"[SPCM] event '%c'  raw=\"%s\"", buffer[0], buffer);
+#endif
         if(buffer[0] == 'd') [self doTransformationEvent:buffer];
         if(buffer[0] == 'k') [self doKeyEvent:buffer];
         if(buffer[0] == 'n') [self doNullRadiusEvent:buffer];
         if(buffer[0] == 'q') [self doQualityEvent:buffer];
-//      if(buffer[0] == 'p') [self doDataRateEvent:buffer];
-//      if(buffer[0] == 'e') [self doErrorEvent:buffer];
-//      if(buffer[0] == 'v') [self doVersionEvent:buffer];
         if(buffer[0] == 'm') [self doModeEvent:buffer];
     }
     return self;
@@ -601,6 +630,8 @@ error:
     if(mode&0x04)
             domModeOn=YES;
     else    domModeOn=NO;
+
+    NSLog(@"[SPCM] mode  dom=%d trans=%d rot=%d", domModeOn, transOn, rotOn);
 
     [frontend UpdateModes:self];
     return self;
@@ -631,6 +662,9 @@ error:
     keys+=16 *CharToNibble(buffer[2]);
     keys+=    CharToNibble(buffer[1]);
 
+#if SPCM_DEBUG
+    NSLog(@"[SPCM] key  bits=0x%03X", keys);
+#endif
     [QuesaConnection deliverKeyPress:keys];
 
     return self;
@@ -647,6 +681,11 @@ error:
     a=rotMult*FourCharsToVal(buffer[3*4+1],buffer[3*4+2],buffer[3*4+3],buffer[3*4+4]);
     b=rotMult*FourCharsToVal(buffer[4*4+1],buffer[4*4+2],buffer[4*4+3],buffer[4*4+4]);
     c=rotMult*FourCharsToVal(buffer[5*4+1],buffer[5*4+2],buffer[5*4+3],buffer[5*4+4]);
+
+#if SPCM_DEBUG
+    if (x != 0.0f || y != 0.0f || z != 0.0f || a != 0.0f || b != 0.0f || c != 0.0f)
+        NSLog(@"[SPCM] move  t=(%.4f %.4f %.4f)  r=(%.4f %.4f %.4f)", x, y, z, a, b, c);
+#endif
 
     [QuesaConnection deliverTranslation:x :y :z andRotation:a :b :c];
 

@@ -148,4 +148,14 @@
     return [[PortnamesArray objectAtIndex:anInt] objectForKey:(id)CFSTR(kIOCalloutDeviceKey)];
 }
 
+- (NSArray<NSString *> *)portNames
+{
+    NSMutableArray<NSString *> *names = [NSMutableArray array];
+    for (NSDictionary *dict in PortnamesArray) {
+        NSString *name = dict[(id)CFSTR(kIOTTYDeviceKey)];
+        if (name) [names addObject:name];
+    }
+    return names;
+}
+
 @end
