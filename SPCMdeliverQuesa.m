@@ -111,7 +111,7 @@
     TQ3Boolean track2DCursor;
 
     Q3Controller_Track2DCursor(fControllerRef, &track2DCursor);
-    Q3Controller_SetButtons(fControllerRef, keys);
+    Q3Controller_SetButtons(fControllerRef, (TQ3Uns32)keys);
 
     return NO;
 }

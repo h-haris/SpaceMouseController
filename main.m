@@ -53,8 +53,13 @@ ___________________________________________________________________________
 */
 
 #import <Cocoa/Cocoa.h>
+#include <stdio.h>
 
 int main(int argc, const char *argv[])
 {
+    // Redirect stderr (NSLog destination) to a file so output is visible
+    // even when the app is launched from Finder / launchd.
+    freopen("/tmp/SpaceMouseController.log", "a", stderr);
+
     return NSApplicationMain(argc, argv);
 }
